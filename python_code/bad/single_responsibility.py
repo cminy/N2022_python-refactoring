@@ -7,15 +7,15 @@ class IEmail(object):
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def setSender(self, sender):
+    def setsender(self, sender):
         pass
 
     @abstractmethod
-    def setReceiver(self, receiver):
+    def setreceiver(self, receiver):
         pass
 
     @abstractmethod
-    def setContent(self, content):
+    def setcontent(self, content):
         pass
 
 class Email(IEmail):
@@ -24,26 +24,26 @@ class Email(IEmail):
         self.protocol = protocol
         self.content_type = content_type
         self.__sender = None
-        self.__receiver = None
         self.__content = None
+        self.__receiver = None
 
-    def setSender(self, sender):
+    def setsender(self, sender):
         if self.protocol == 'IM':
             self.__sender = ''.join(["I'm ", sender])
         else:
             self.__sender = sender
 
-    def setReceiver(self, receiver):
-        if self.protocol == 'IM':
-            self.__receiver = ''.join(["I'm ", receiver])
-        else:
-            self.__receiver = receiver
-
-    def setContent(self, content):
+    def setcontent(self, content):
         if self.content_type == 'MyML':
             self.__content = '\n'.join(['<myML>', content, '</myML>'])
         else:
             self.__content = content
+
+    def setreceiver(self, receiver):
+        if self.protocol == 'IM':
+            self.__receiver = ''.join(["I'm ", receiver])
+        else:
+            self.__receiver = receiver
 
     def __repr__(self):
 
@@ -53,10 +53,11 @@ class Email(IEmail):
 
 def main():
     email = Email('IM', 'MyML')
-    email.setSender('qmal')
-    email.setReceiver('james')
-    email.setContent('Hello, there!')
-    print email
+    email.setsender('miny')
+    email.setreceiver('igor')
+    email.setcontent('Hello, there!')
+    print(email)
 
 if __name__ == '__main__':
     main()
+
