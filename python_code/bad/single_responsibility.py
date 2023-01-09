@@ -24,8 +24,8 @@ class Email(IEmail):
         self.protocol = protocol
         self.content_type = content_type
         self.__sender = None
-        self.__receiver = None
         self.__content = None
+        self.__receiver = None
 
     def setsender(self, sender):
         if self.protocol == 'IM':
@@ -33,17 +33,17 @@ class Email(IEmail):
         else:
             self.__sender = sender
 
-    def setreceiver(self, receiver):
-        if self.protocol == 'IM':
-            self.__receiver = ''.join(["I'm ", receiver])
-        else:
-            self.__receiver = receiver
-
     def setcontent(self, content):
         if self.content_type == 'MyML':
             self.__content = '\n'.join(['<myML>', content, '</myML>'])
         else:
             self.__content = content
+
+    def setreceiver(self, receiver):
+        if self.protocol == 'IM':
+            self.__receiver = ''.join(["I'm ", receiver])
+        else:
+            self.__receiver = receiver
 
     def __repr__(self):
 
@@ -53,10 +53,11 @@ class Email(IEmail):
 
 def main():
     email = Email('IM', 'MyML')
-    email.setsender('qmal')
-    email.setreceiver('james')
+    email.setsender('miny')
+    email.setreceiver('igor')
     email.setcontent('Hello, there!')
     print(email)
 
 if __name__ == '__main__':
     main()
+
