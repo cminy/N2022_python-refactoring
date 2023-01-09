@@ -54,8 +54,8 @@ class Email(IEmail):
 def main():
     email = Email('IM', 'MyML')
     email.setsender('qmal')
-    email.setReceiver('james')
-    email.setContent('Hello, there!')
+    email.setreceiver('james')
+    email.setcontent('Hello, there!')
     print(email)
 
 if __name__ == '__main__':

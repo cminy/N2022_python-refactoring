@@ -59,7 +59,7 @@ class Email(IEmail):
             self.__receiver = receiver
 
     def setcontent(self, content):
-        self.__content = content.getString()
+        self.__content = content.getstring()
 
     def __repr__(self):
 
@@ -70,9 +70,9 @@ class Email(IEmail):
 def main():
     email = Email('IM')
     email.setsender('qmal')
-    email.setReceiver('james')
+    email.setreceiver('james')
     content = MyContent('Hello, there!')
-    email.setContent(content)
+    email.setcontent(content)
     print(email)
 
 if __name__ == '__main__':
